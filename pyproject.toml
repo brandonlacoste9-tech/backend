@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "money-maker-api"
+version = "0.1.0"
+description = "Backend-only SaaS API - AI Content Generator / API-as-a-Service"
+authors = []
+readme = "README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.109.0"
+uvicorn = { extras = ["standard"], version = "^0.27.0" }
+sqlalchemy = { extras = ["asyncio"], version = "^2.0.25" }
+asyncpg = "^0.29.0"
+alembic = "^1.13.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+python-jose = { extras = ["cryptography"], version = "^3.3.0" }
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
+stripe = "^8.0.0"
+redis = "^5.0.0"
+celery = { extras = ["redis"], version = "^5.3.0" }
+httpx = "^0.26.0"
+pytest = "^7.4.0"
+pytest-asyncio = "^0.23.0"
+pytest-cov = "^4.1.0"
+aiosqlite = "^0.19.0"
+loguru = "^0.7.0"
+fastapi-prometheus = "^0.3.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.0"
+psycopg2-binary = "^2.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
