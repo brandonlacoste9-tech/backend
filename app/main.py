@@ -3,9 +3,9 @@ import sys
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi_prometheus import PrometheusMiddleware, metrics_endpoint
 from loguru import logger
 from prometheus_client import Gauge
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.api import router_auth, router_service, router_sub, router_usage
 
@@ -24,8 +24,8 @@ app = FastAPI(
     version="0.1.0",
 )
 
-app.add_middleware(PrometheusMiddleware)
-app.add_route("/metrics", metrics_endpoint)
+# Prometheus metrics exposed at /metrics
+Instrumentator().instrument(app).expose(app, include_in_schema=False, endpoint="/metrics")
 
 app.add_middleware(
     CORSMiddleware,

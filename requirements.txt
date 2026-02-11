@@ -24,8 +24,8 @@ requests>=2.31.0
 
 # Observability
 loguru>=0.7.0
-fastapi-prometheus>=0.3.0
 prometheus-client>=0.19.0
+prometheus-fastapi-instrumentator>=7.1.0
 
 # Dev (optional for Docker runtime)
 psycopg2-binary>=2.9.0
